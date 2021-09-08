@@ -1,122 +1,3 @@
-$(function() {
-
-
-  //  var siteSticky = function() {
-  //   $(".js-sticky-header").sticky({topSpacing:0});
-  // };
-  // siteSticky();
-	var siteMenuClone = function() {
-
-		$('.js-clone-nav').each(function() {
-			var $this = $(this);
-			$this.clone().attr('class', 'site-nav-wrap').appendTo('.site-mobile-menu-body');
-		});
-
-
-		setTimeout(function() {
-			
-			var counter = 0;
-      $('.site-mobile-menu .has-children').each(function(){
-        var $this = $(this);
-        
-        $this.prepend('<span class="arrow-collapse collapsed">');
-
-        $this.find('.arrow-collapse').attr({
-          'data-toggle' : 'collapse',
-          'data-target' : '#collapseItem' + counter,
-        });
-
-        $this.find('> ul').attr({
-          'class' : 'collapse',
-          'id' : 'collapseItem' + counter,
-        });
-
-        counter++;
-
-      });
-
-    }, 1000);
-
-		$('body').on('click', '.arrow-collapse', function(e) {
-      var $this = $(this);
-      if ( $this.closest('li').find('.collapse').hasClass('show') ) {
-        $this.removeClass('active');
-      } else {
-        $this.addClass('active');
-      }
-      e.preventDefault();  
-      
-    });
-
-		$(window).resize(function() {
-			var $this = $(this),
-				w = $this.width();
-
-			if ( w > 768 ) {
-				if ( $('body').hasClass('offcanvas-menu') ) {
-					$('body').removeClass('offcanvas-menu');
-				}
-			}
-		})
-
-		$('body').on('click', '.js-menu-toggle', function(e) {
-			var $this = $(this);
-			e.preventDefault();
-
-			if ( $('body').hasClass('offcanvas-menu') ) {
-				$('body').removeClass('offcanvas-menu');
-				$this.removeClass('active');
-			} else {
-				$('body').addClass('offcanvas-menu');
-				$this.addClass('active');
-			}
-		}) 
-
-		// click outisde offcanvas
-		$(document).mouseup(function(e) {
-	    var container = $(".site-mobile-menu");
-	    if (!container.is(e.target) && container.has(e.target).length === 0) {
-	      if ( $('body').hasClass('offcanvas-menu') ) {
-					$('body').removeClass('offcanvas-menu');
-				}
-	    }
-		});
-	}; 
-	siteMenuClone();
-
-});
-function AddReadMore() {
-        //This limit you can set after how much characters you want to show Read More.
-        var carLmt = 80;
-        // Text to show when text is collapsed
-        var contentDataTxt = " ... xem thêm";
-        // Text to show when text is expanded
-        var someVeekTxt = " thu gọn";
-
-
-        //Traverse all selectors with this class and manupulate HTML part to show Read More
-        $(".showContentAll").each(function() {
-            if ($(this).find(".firstSec").length)
-                return;
-
-            var allstr = $(this).text();
-            if (allstr.length > carLmt) {
-                var firstSet = allstr.substring(0, carLmt);
-                var secdHalf = allstr.substring(carLmt, allstr.length);
-                var strtoadd = firstSet + "<span class='DspInfo'>" + secdHalf + "</span><span class='contentData'  title='Click to Show More'>" + contentDataTxt + "</span><span class='someVeek' title='Click to Show Less'>" + someVeekTxt + "</span>";
-                $(this).html(strtoadd);
-            }
-
-        });
-        //ReadMore and ReadLess Click Event binding
-        $(document).on("click", ".contentData,.someVeek", function() {
-            $(this).closest(".showContentAll").toggleClass("displayreadallsome readalldatafull");
-        });
-    }
-    $(function() {
-        //Calling function after Page Load
-        AddReadMore();
-    });
 
 $(document).ready(function(){
       $(window).scroll(function(){
@@ -176,3 +57,70 @@ if ($('.smart-scroll').length > 0) { // check if element exists
 
     });
 }
+
+ $("#bodyContent,.bg-breadcumb,.smart-scroll,.background-show").css("background-color", localStorage.getItem("backgroundColor"));
+      $(".content,.title-chap").css("font-size",localStorage.getItem("fontsize")+"px");
+      $( ".background-style" ).click(function() {
+      var color = $( this ).css( "background-color" );
+      
+      localStorage.setItem("backgroundColor", color);
+      $("#bodyContent,.bg-breadcumb,.smart-scroll,.background-show").css("background-color", localStorage.getItem("backgroundColor"));
+    });
+      
+      
+      //size
+      document.getElementById('size').value= localStorage.getItem("fontsize"); 
+      $(".size-show").html(localStorage.getItem("fontsize")+"px");
+      $("#size").change(function(){
+        var fontSize = $(this).val();
+        localStorage.setItem("fontsize", fontSize);
+        $(".content,.title-chap").css("font-size",localStorage.getItem("fontsize")+"px");
+        $(".size-show").html(localStorage.getItem("fontsize")+"px");
+      });
+      // end
+      // decrease-size
+      $( "#decrease-size" ).click(function(e) {
+        var fontSize =  parseInt($("#size").val()) - 1;
+        localStorage.setItem("fontsize", fontSize);
+        $(".content,.title-chap").css("font-size",localStorage.getItem("fontsize")+"px");
+        $(".size-show").html(localStorage.getItem("fontsize")+"px");
+         document.getElementById('size').value= localStorage.getItem("fontsize"); 
+      });
+      // end
+      // increase-size
+      $( "#increase-size" ).click(function(e) {
+        var fontSize = parseInt($("#size").val()) + 1;
+        localStorage.setItem("fontsize", fontSize);
+        $(".content,.title-chap").css("font-size",localStorage.getItem("fontsize")+"px");
+        $(".size-show").html(localStorage.getItem("fontsize")+"px");
+         document.getElementById('size').value= localStorage.getItem("fontsize"); 
+      });
+
+      // line-size
+
+      document.getElementById('line-size').value= localStorage.getItem("linesize"); 
+      $(".size-line-show").html(localStorage.getItem("linesize"));
+      $("#line-size").change(function(){
+        var linesize = $(this).val();
+        localStorage.setItem("linesize", linesize);
+        $(".content").css("line-height",localStorage.getItem("linesize"));
+        $(".size-line-show").html(localStorage.getItem("linesize"));
+      });
+      // end
+      // decrease-size
+      $( "#decrease-line-size" ).click(function(e) {
+        var linesize = parseFloat($("#line-size").val()) - 0.1;
+        localStorage.setItem("linesize", linesize);
+        $(".content").css("line-height",localStorage.getItem("linesize"));
+        $(".size-line-show").html(localStorage.getItem("linesize"));
+        document.getElementById('line-size').value= localStorage.getItem("linesize");  
+      });
+      // end
+      // increase-size
+      $( "#increase-line-size" ).click(function(e) {
+        var linesize = parseFloat($("#line-size").val()) + 0.1;
+        localStorage.setItem("linesize", linesize);
+        $(".content").css("line-height",localStorage.getItem("linesize"));
+        $(".size-line-show").html(localStorage.getItem("linesize"));
+        document.getElementById('line-size').value= localStorage.getItem("linesize");  
+      });

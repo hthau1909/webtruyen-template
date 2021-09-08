@@ -17,74 +17,72 @@
     
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
+    
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
     <title>Đọc truyện Ta Tu Luyện Thành Thánh</title>
   </head>
   <body>
+    <header class="site-navbar js-sticky-header site-navbar-target sticky-top" role="banner">
 
-
-    <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to right, #ff33cc 0%, #3366ff 100%);">
+        <div class="container">
+          <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav m-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-list"></i> Danh sách
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>      
+      
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-list"></i> Thể loại
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-list"></i> Lọc truyện
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Trên 100 chap</a>
+                <a class="dropdown-item" href="#">Dưới 100 chap</a>
+                <a class="dropdown-item" href="#">Hoàn thành</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Nâng cao</a>
+              </div>
+            </li>
+      
+          </ul>
+          <form class="form-inline my-2 my-lg-0 ">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-light my-2 my-sm-0" style="border-radius: 50%;" type="submit"><i class="fal fa-search text-dark"></i></button>
+          </form>
+        </div>  
         </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
-   
-    
-    <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
-
-      <div class="container">
-        <div class="row align-items-center">
-          
-          <div class="col-6 col-xl-2">
-            <h1 class="mb-0 site-logo"><a href="index.html"><img style="height: 30px;" src="images/logo (1).png" alt=""></a></h1>
-          </div>
-
-          <div class="col-12 col-md-10 d-none d-xl-block">
-            <nav class="site-navigation position-relative text-right" role="navigation">
-
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                
-                <li><a href="#home-section" class="nav-link">Trang Chủ</a></li>
-                <li class="has-children">
-                  <a href="#about-section" class="nav-link">Thể Loại</a>
-                  <ul class="dropdown">
-                    <li><a href="#team-section" class="nav-link">18+</a></li>
-                    <li><a href="#pricing-section" class="nav-link">Gay</a></li>
-                    <li><a href="#faq-section" class="nav-link">Sex</a></li>
-                  </ul>
-                </li>
-                <li class="has-children">
-                  <a href="#about-section" class="nav-link">Lọc Truyện</a>
-                  <ul class="dropdown">
-                    <li><a href="#team-section" class="nav-link">Trên 100 Chap</a></li>
-                    <li><a href="#pricing-section" class="nav-link">Dưới 100 Chap</a></li>
-                  </ul>
-                </li>
-                <li class="position-relative "><button class="icon-search position-absolute" style="right: 5px;top: 10px;border:none;background: #ffffff"></button><input class="form-control" type="text" style="display: inline-block;"></li>
-                
-                
-              </ul>
-            </nav>
-          </div>
-          
-
-          <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a></div>
-
-        </div>
-      </div>
+        
+      </nav>
       
     </header>
-
-    <div class="hero">
-      
-    </div>
-    <div class="container-fluid" style="height:auto;background: url(images/hero_2.jpg); background-repeat: no-repeat;
-  background-attachment: fixed;">
+    <div class="container-fluid">
       
     <section class="container main bg-light">
       <div class="row">
@@ -114,7 +112,7 @@
                       <h1 class="text-center">Ta Tu Luyện Thành Thánh</h1>
                       
                       
-                      <ul class="pl-0">
+                      <ul class="pl-0 detail-content" >
                         <li class="row">
                           <p class="col-4"><i class="fal fa-user"></i> Tác giả</p>
                           <p class="col-8">Huỳnh Tấn Hậu</p>
@@ -166,69 +164,57 @@
                       <i class="fas fa-list"></i> Danh sách chương
                       </h3>
                       <div style="border: 1px solid black"></div>
-                      <div class="row border-bottom">
-                        <div class="col-3">
-                          Chương số
-                        </div>
-                        <div class="col-6">
-                          Tên chương
-                        </div>
-                        <div class="col-3">
-                          Cập nhật lúc
-                        </div>
-                      </div>
-
-                      <div class="row detail-chap">
+                       <div class="row detail-chap">
                         <a href="watch.html" class="col-3">
                           Chương 1
                         </a>
-                        <a href="watch.html" class="col-6">
+                        <h2  class="col-6 h6"><a href="watch.html">
                           Ta đã sống lại rồi 
-                        </a>
+                        </a></h2>
                         <small class="col-3">
                           <i class="fas fa-clock"></i> 19 phút trước
                         </small>
                       </div>
-                      <div class="row detail-chap">
+                       <div class="row detail-chap">
                         <a href="watch.html" class="col-3">
                           Chương 1
                         </a>
-                        <a href="watch.html" class="col-6">
+                        <h2  class="col-6 h6"><a href="watch.html">
                           Ta đã sống lại rồi 
-                        </a>
+                        </a></h2>
                         <small class="col-3">
                           <i class="fas fa-clock"></i> 19 phút trước
                         </small>
                       </div>
-                      <div class="row detail-chap">
+                       <div class="row detail-chap">
                         <a href="watch.html" class="col-3">
                           Chương 1
                         </a>
-                        <a href="watch.html" class="col-6">
+                        <h2  class="col-6 h6"><a href="watch.html">
                           Ta đã sống lại rồi 
-                        </a>
+                        </a></h2>
                         <small class="col-3">
                           <i class="fas fa-clock"></i> 19 phút trước
                         </small>
                       </div>
-                      <div class="row detail-chap">
+                       <div class="row detail-chap">
                         <a href="watch.html" class="col-3">
                           Chương 1
                         </a>
-                        <a href="watch.html" class="col-6">
+                        <h2  class="col-6 h6"><a href="watch.html">
                           Ta đã sống lại rồi 
-                        </a>
+                        </a></h2>
                         <small class="col-3">
                           <i class="fas fa-clock"></i> 19 phút trước
                         </small>
                       </div>
-                      <div class="row detail-chap">
+                       <div class="row detail-chap">
                         <a href="watch.html" class="col-3">
                           Chương 1
                         </a>
-                        <a href="watch.html" class="col-6">
+                        <h2  class="col-6 h6"><a href="watch.html">
                           Ta đã sống lại rồi 
-                        </a>
+                        </a></h2>
                         <small class="col-3">
                           <i class="fas fa-clock"></i> 19 phút trước
                         </small>
@@ -390,7 +376,6 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
