@@ -1,3 +1,30 @@
+var seen = [];
+var seenAlready = JSON.parse(localStorage.getItem('seen'));
+
+// var seenAlready = JSON.parse(localStorage.getItem('seen'));
+$('#previous-chap,#next-chap').on('click', function(){
+// $(this).css('background-color','grey');
+if (typeof(Storage) !== "undefined") {
+if(localStorage.getItem('seen') == null)
+{
+  seen.push($(this).attr('href'));
+      localStorage.setItem('seen', JSON.stringify(seen));
+}
+else{
+  var keys = Object.keys(seenAlready);
+    keys.forEach(function(key){
+        seen.push(seenAlready[key]);
+    });
+    // console.log(seen);
+  if(!seen.includes($(this).attr('href'))){
+        seen.push($(this).attr('href'));
+        localStorage.setItem('seen', JSON.stringify(seen));
+    } 
+}
+  
+}
+});
+//watch.js
 
 $(document).ready(function(){
       $(window).scroll(function(){
@@ -58,13 +85,13 @@ if ($('.smart-scroll').length > 0) { // check if element exists
     });
 }
 
- $("#bodyContent,.bg-breadcumb,.smart-scroll,.background-show").css("background-color", localStorage.getItem("backgroundColor"));
+ $("#bodyContent,.smart-scroll,.background-show").css("background-color", localStorage.getItem("backgroundColor"));
       $(".content,.title-chap").css("font-size",localStorage.getItem("fontsize")+"px");
       $( ".background-style" ).click(function() {
       var color = $( this ).css( "background-color" );
       
       localStorage.setItem("backgroundColor", color);
-      $("#bodyContent,.bg-breadcumb,.smart-scroll,.background-show").css("background-color", localStorage.getItem("backgroundColor"));
+      $("#bodyContent,.smart-scroll,.background-show").css("background-color", localStorage.getItem("backgroundColor"));
     });
       
       
@@ -124,3 +151,22 @@ if ($('.smart-scroll').length > 0) { // check if element exists
         $(".size-line-show").html(localStorage.getItem("linesize"));
         document.getElementById('line-size').value= localStorage.getItem("linesize");  
       });
+$('li.has-mega-menu').each(function(idx, val){  
+        var set = 10, //Number of links to display in each column
+            buffer = [],
+            dropdown = $('.dropdown-menu', this),
+            children = dropdown.children(),
+            cols = Math.ceil(children.length/set),
+            col_class = 'col-6 col-md-' + (cols >= 5 ? '2' : (cols == 4 ? '3' : (cols == 3 ? '4' : 'x'))),
+            container_class = 'px-0 container container-' + (cols == 2 ? 'sm' : (cols == 3 ? 'md' : (cols == 4 ? 'lg' : (cols >= 5 ? 'xl' : 'x'))));
+            
+        for(var i = 0; i < cols; i++) {
+            buffer.push('<div class="' + col_class + '">');             
+            children.slice(i*set, (i+1)*set).each(function(){
+                buffer.push($(this).prop('outerHTML')); 
+            });
+            buffer.push('</div>');  
+        }
+        
+        dropdown.html('<div class="' + container_class + '"><div class="row">' + buffer.join('\n') + '</div></div>');
+});

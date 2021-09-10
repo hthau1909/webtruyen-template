@@ -5,70 +5,58 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Custom Read More Read Less Using jQuery - - Demo :: www.pakainfo.com</title>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script>
-    function AddReadMore() {
-        //This limit you can set after how much characters you want to show Read More.
-        var carLmt = 80;
-        // Text to show when text is collapsed
-        var contentDataTxt = " ... Read More";
-        // Text to show when text is expanded
-        var someVeekTxt = " Read Less";
-
-
-        //Traverse all selectors with this class and manupulate HTML part to show Read More
-        $(".showContentAll").each(function() {
-            if ($(this).find(".firstSec").length)
-                return;
-
-            var allstr = $(this).text();
-            if (allstr.length > carLmt) {
-                var firstSet = allstr.substring(0, carLmt);
-                var secdHalf = allstr.substring(carLmt, allstr.length);
-                var strtoadd = firstSet + "<span class='DspInfo'>" + secdHalf + "</span><span class='contentData'  title='Click to Show More'>" + contentDataTxt + "</span><span class='someVeek' title='Click to Show Less'>" + someVeekTxt + "</span>";
-                $(this).html(strtoadd);
-            }
-
-        });
-        //ReadMore and ReadLess Click Event binding
-        $(document).on("click", ".contentData,.someVeek", function() {
-            $(this).closest(".showContentAll").toggleClass("displayreadallsome readalldatafull");
-        });
-    }
-    $(function() {
-        //Calling function after Page Load
-        AddReadMore();
-    });
-    </script>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
     <style>
-    .showContentAll.displayreadallsome .DspInfo,
-    .showContentAll.displayreadallsome .someVeek {
-        display: none;
-    }
+    	li {
+		  cursor: pointer;
+		}
 
-    .showContentAll.readalldatafull .contentData {
-        display: none;
-    }
-
-    .showContentAll .contentData,
-    .showContentAll .someVeek {
-        font-weight: bold;
-        margin-left: 2px;
-        color: blue;
-        cursor: pointer;
-    }
-
-    .showContentAllWrapTxt.readalldatafull .DspInfo,
-    .showContentAllWrapTxt.readalldatafull .someVeek {
-        display: block;
-    }
     </style>
 </head>
-
 <body>
-    <h3>Show More Content</h3>
-    <p class="showContentAll displayreadallsome">TamilRockers. TamilRockers is a public torrent website. TamilRockers website uploads the pirated versions of Tamil, Telugu, Hindi, English. Tamil Movies HD New TamilRockers. 42 004 members. View in Telegram · Preview channel. If you have Telegram, you can view and join. Because tamilrockers website is blocked by the telecommunications authorities of India(ISP) to prevent movie piracy. What is Tamilrockers? Tamilrockers site gives Tamil, Telugu, Hindi, English, and Malayalam motion pictures for nothing download. Tamilrockers is an online Piracy Site that Provide Malayalam And Telegu Movies, Films, Songs And Vid. Tamilrockers and Movierulz are Torrent websites that illegally upload and distribute copyrighted contents, including TV shows, movies, music and videos.
-</p>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<ul>
+  <li><a href='index.html'>first post</a></li>
+  <li><a href='test.html'>second post</a></li>
+  <li><a href='main.html'>third post</a></li>
+  <li><a href='detail.html'>chap1</a></li>
+  <li><a href='watch.html'>Chap 2</a></li>
+</ul>
+<script>
+	var seen = [];
+	var seenAlready = JSON.parse(localStorage.getItem('seen'));
+
+	$('li').on('click', function(){
+	$(this).css('background-color','pink');
+	if (typeof(Storage) !== "undefined") {
+		if(localStorage.getItem('seen') == null)
+		{
+			seen.push($(this).find('a').attr('href'));
+	        localStorage.setItem('seen', JSON.stringify(seen));
+		}
+		else{
+			var keys = Object.keys(seenAlready);
+    		keys.forEach(function(key){
+        		seen.push(seenAlready[key]);
+    		});
+    		// console.log(seen);
+			if(!seen.includes($(this).find('a').attr('href'))){
+	        	seen.push($(this).find('a').attr('href'));
+	        	localStorage.setItem('seen', JSON.stringify(seen));
+	    	}	
+		}
+	    
+	  }
+	});
+	
+
+
+
+	// var seenAlready = JSON.parse(localStorage.getItem('seen'));
+	$.each(seenAlready,function(index, value){
+	   $("a[href="+'"'+value+'"'+"]").parent().css('background-color','pink');
+	});
+</script>
 </body>
 
 </html>
