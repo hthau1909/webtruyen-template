@@ -1,24 +1,24 @@
-var seen = [];
-var seenAlready = JSON.parse(localStorage.getItem('seen'));
+var visited = [];
+var visitedAlready = JSON.parse(localStorage.getItem('visited'));
 
-// var seenAlready = JSON.parse(localStorage.getItem('seen'));
-$('#previous-chap,#next-chap').on('click', function(){
+// var visitedAlready = JSON.parse(localStorage.getItem('visited'));
+$('.previous-chap,.next-chap').on('click', function(){
 // $(this).css('background-color','grey');
 if (typeof(Storage) !== "undefined") {
-if(localStorage.getItem('seen') == null)
+if(localStorage.getItem('visited') == null)
 {
-  seen.push($(this).attr('href'));
-      localStorage.setItem('seen', JSON.stringify(seen));
+  visited.push($(this).attr('href'));
+      localStorage.setItem('visited', JSON.stringify(visited));
 }
 else{
-  var keys = Object.keys(seenAlready);
+  var keys = Object.keys(visitedAlready);
     keys.forEach(function(key){
-        seen.push(seenAlready[key]);
+        visited.push(visitedAlready[key]);
     });
-    // console.log(seen);
-  if(!seen.includes($(this).attr('href'))){
-        seen.push($(this).attr('href'));
-        localStorage.setItem('seen', JSON.stringify(seen));
+    // console.log(visited);
+  if(!visited.includes($(this).attr('href'))){
+        visited.push($(this).attr('href'));
+        localStorage.setItem('visited', JSON.stringify(visited));
     } 
 }
   
